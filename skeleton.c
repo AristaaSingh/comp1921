@@ -12,13 +12,6 @@ typedef struct {
 
 // function definitions
 
-void validInput(const char *inpFilename){
-    // this function will check whether the provided input data files contain valid inputs, conditioned on:
-    // - the file should only contain w, a, s, d, m characters
-    // file should not contain space characters
-    // every single input is separated by a newline character
-}
-
 void validMaze(const char *filename){
     // this function will check whether the provided files contain valid mazes. This includes conditions like:
     // whether the maze size is within range
@@ -29,11 +22,6 @@ void validMaze(const char *filename){
 
 void startGame(const char *filename){
     // this function will start the game by loading the file using fopen, and putting the required values in the variables in the struct.
-}
-
-void inputArray(const char *inpFilename){
-    // this function will read from the input file provided as argv[2] and put all the steps in an array.
-    // the elements of the array can be accessed one by one later in the program to navigate through the maze when the game loads. 
 }
 
 void loadGame(const char *filename){
@@ -54,9 +42,9 @@ void endGame(const char *filename){
 
 int main(int argc, char *argv[]) {
 
-    // Check for correct number of command-line arguments (3 in this case: executable, maze filename, inputs filename)
+    // Check for correct number of command-line arguments (2 in this case: executable, maze filename)
     // value of argv[1] should be the filename
-    if (argc != 3) {
+    if (argc != 2) {
         printf("Usage: ./skeleton <filename>\n");
         return 0;
     }
@@ -68,17 +56,11 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    // check if input file is valid
-    validInput(argv[2]);
-
     // check if maze file is valid
     validMaze(argv[1]);
 
     // start the game by loading maze data into struct
     startGame(argv[1]);
-
-    // load input data into an array
-    inputArray(argv[2]);
 
     // begin playing game and navigate through maze
     loadGame(argv[1]);
